@@ -11,3 +11,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      - name: Update index.html
+        run: |
+          ACTOR="${{ github.actor }}"
+          if [ "$ACTOR" = "Yanisa-Prumai" ]; then
+            sed -i '/<\/body>/i <p>Updated by '"$ACTOR"' on '"$(date)"'</p>' index.html
+          fi
