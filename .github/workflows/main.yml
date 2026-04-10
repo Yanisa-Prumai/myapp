@@ -18,3 +18,7 @@ jobs:
           if [ "$ACTOR" = "Yanisa-Prumai" ]; then
             sed -i '/<\/body>/i <p>Updated by '"$ACTOR"' on '"$(date)"'</p>' index.html
           fi
+          
+      - name: Update README.md
+        run: |
+          echo "### Updated by ${{ github.actor }} on $(date '+%Y-%m-%d %H:%M:%S') [Commit: $(git rev-parse --short HEAD)]" >> README.md
