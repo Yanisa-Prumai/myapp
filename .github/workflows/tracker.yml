@@ -1,0 +1,18 @@
+name: GitHub Projects Automation
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  move-issue-to-done:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check if PR is merged
+        if: github.event.pull_request.merged == true
+        run: |
+          echo "Pull Request was merged"
